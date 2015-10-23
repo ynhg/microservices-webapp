@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" layout:decorator="layouts/management" th:with="title=#{accounts.accounts_list.title}">
+  <head>
+    <title th:text="${title}">Accounts List</title>
+  </head>
+  <body>
+    <div class="fixed wrapper">
+      <div class="content-wrapper">
+        <section layout:fragment="content">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title" th:text="${title}">Accounts List</h3>
+                </div>
+                <div class="box-body">
+                  <table class="table table-bordered">
+                    <tr>
+                      <th>#</th>
+                      <th th:text="#{account.name}">Name</th>
+                      <th th:text="#{account.createdDate}">Created Date</th>
+                      <th th:text="#{account.createdBy}">Created By</th>
+                    </tr>
+                    <tr th:each="a : ${accounts}">
+                      <td th:text="${aStat.count}">1.</td>
+                      <td th:text="${a.name}">Update software</td>
+                      <td th:text="${{a.createdDate}}"></td>
+                      <td th:text="${a.createdBy}"></td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="box-footer">
+                  <a href="" th:href="@{/accounts/new}" class="btn btn-primary" th:text="#{button.add}">Create Account</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>

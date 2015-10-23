@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layouts/management" th:with="title=#{accounts.account_details.title}">
+  <head>
+    <title th:text="${title}">Account Details</title>
+  </head>
+  <body>
+    <div class="fixed wrapper">
+      <div class="content-wrapper">
+        <section layout:fragment="content">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="box box-primary">
+                <div class="box-header with-border">
+                  <h3 class="box-title" th:text="${title}">Account Details</h3>
+                </div>
+                <div class="box-body">
+                  <dl th:object="${account}" class="dl-horizontal">
+                    <dt th:text="#{account.name}"></dt>
+                    <dd th:text="*{name}"></dd>
+                    <dt th:text="#{account.createdDate}"></dt>
+                    <dd th:text="*{createdDate}"></dd>
+                    <dt th:text="#{account.createdBy}"></dt>
+                    <dd th:text="*{createdBy}"></dd>
+                  </dl>
+                </div>
+                <div class="box-footer">
+                  <a href="#" th:href="@{/accounts/new}" class="btn btn-primary autofocus">继续创建</a>
+                  <a href="#" th:href="@{/accounts}" class="btn btn-default">返回</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    
+    <th:block layout:fragment="script">
+    <script>
+    $(function(){
+    	$('.autofocus').focus();
+    });
+    </script>
+    </th:block>
+  </body>
+</html>
