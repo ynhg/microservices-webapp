@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -55,7 +54,7 @@ public class AccountController {
     }
 
     @RequestMapping(value = "/accounts/new", method = RequestMethod.POST)
-    public String processCreationForm(@Valid @ModelAttribute Account account, String retypePassword, BindingResult result, SessionStatus status) {
+    public String processCreationForm(String retypePassword, @Valid Account account, BindingResult result, SessionStatus status) {
         if (result.hasErrors()) {
             return "accounts/create_or_update_account_form";
         }
